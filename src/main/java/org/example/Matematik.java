@@ -27,28 +27,101 @@ public class Matematik {
         return educationLevel;
     }
 
-    public double calculateSquareSurface(double side) throws Exception {
-        if (educationLevel >= 2) {
+
+    public double calculateCircleArea(double radius) throws Exception {
+
+        if (educationLevel == 10){
+            System.out.println("Не хочу ничего делать.");
+            return -1;
+        }
+        if (educationLevel >= 3) {
             System.out.println("Я начал работать.");
-            if (side <= 0) {
+            if (radius <= 0) {
                 // нужно выбрасывать ошибку
-                System.out.println("Сторона квадрата не может быть отрицательной");
+                System.out.println("Радиус круга не может быть отрицательным");
                 return -1;
             }
             Thread.sleep(100_000 / speed);
-            return side * side;
-        } else if (educationLevel == 1) {
-            System.out.println("Я только начинаю, могу ошибтся в этом непростом для меня вычислении.");
-            if (Math.random() > 0.5) {
+            return Math.PI * radius * radius;
+        } else if (educationLevel == 2) {
+            System.out.println("Я только начинаю, могу ошибиться с вероятностью 40% в этом непростом для меня вычислении.");
+            if (Math.random() > 0.4) {
                 Thread.sleep(200_000 / speed);
-                return side * side;
+                return Math.PI * radius * radius;
             } else {
                 Thread.sleep(200_000 / speed);
-                return side * side / 2;
+                return Math.PI * radius * radius / 2;
             }
-        } else {
+        } else if (educationLevel == 1) {
+            System.out.println("Я только начинаю, могу ошибиться с вероятностью 60% в этом непростом для меня вычислении.");
+            if (Math.random() > 0.6) {
+                Thread.sleep(200_000 / speed);
+                return Math.PI * radius * radius;
+            } else {
+                Thread.sleep(200_000 / speed);
+                return Math.PI * radius * radius / 2;
+            }
+        }
+
+        else {
             System.out.println("Ничего не могу сделать.");
-            return -999_999_999;
+            return -1;
+
         }
     }
+    public double calculatePrismSurfaceArea(double a, double b, double c, double height) throws Exception {
+
+        if (educationLevel == 10){
+            System.out.println("Не хочу ничего делать.");
+            return -999_999_999;
+        }
+        if (educationLevel >= 4) {
+            System.out.println("Я начал работать.");
+            if (a * b * c * height <= 0) {
+                // нужно выбрасывать ошибку
+                System.out.println("переданные величины не могут быть отрицательными");
+                return -1;
+            }
+            Thread.sleep(100_000 / speed);
+            double semiperimeter = (a + b + c) / 2;
+            return 2 * Math.sqrt(semiperimeter * (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c)) + 2 * semiperimeter * height;
+
+        }
+
+        else {
+            System.out.println("Ничего не могу сделать.");
+            return -1;
+        }
+    }
+
+    public double calculateSphereSurfaceArea(double radius) throws Exception {
+
+        if (educationLevel == 10){
+            System.out.println("Не хочу ничего делать.");
+            return -1;
+        }
+        if (educationLevel >= 5) {
+            System.out.println("Я начал работать.");
+            if (radius <= 0) {
+                // нужно выбрасывать ошибку
+                System.out.println("переданная величина не может быть отрицательной");
+                return -1;
+            }
+            Thread.sleep(100_000 / speed);
+            return 4 * Math.PI * radius * radius;
+
+        }
+
+        else {
+            System.out.println("Ничего не могу сделать.");
+            return -1;
+        }
+    }
+
+
+
+
+
+
+
 }
